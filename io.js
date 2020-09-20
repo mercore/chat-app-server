@@ -1,6 +1,10 @@
 module.exports = io => {
 
   io.on('connection', socket => {
+
+    socket.on('start-server', () => {
+      socket.emit('start-server')
+    })
     
     socket.on('join', name => {
       socket.emit('message', { user: 'admin', text: `${name}, welcome to the chat` })
